@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import os
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
 db = SQLAlchemy(app)
@@ -20,7 +19,7 @@ class Shift(db.Model):
     start_time = db.Column(db.DateTime, nullable=False)
     end_time = db.Column(db.DateTime, nullable=False)
 
-# # Push an application context so we can use `db.create_all()`
+# Push an application context so we can use `db.create_all()`
 with app.app_context():
     db.create_all()
 
